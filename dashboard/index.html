@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India FMCG Sector Financial Analytics Dashboard</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Background Ambient Glows -->
+    <div class="ambient-glow orb-1"></div>
+    <div class="ambient-glow orb-2"></div>
+
+    <!-- Top Header Banner -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="university-logo">
+                <i class="fa-solid fa-chart-line header-icon"></i>
+            </div>
+            <div class="header-title">
+                <h1>FMCG Sector Financial Analytics</h1>
+                <p class="course-code">Comprehensive 10-Year Ratio Analysis & Peer Comparison (FY2016 - FY2025)</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <!-- Theme Toggle Button -->
+            <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle Dark/Light Mode">
+                <i class="fa-solid fa-moon moon-icon"></i>
+                <i class="fa-solid fa-sun sun-icon"></i>
+            </button>
+            <div class="project-tag">
+                <span class="tag-title" style="background-color: #d1fae5; color: #065f46;">Market Dashboard</span>
+                <span class="tag-author">Live Sector Analysis</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="app-container">
+        
+        <!-- Sidebar: Company Selector & Project Info -->
+        <aside class="app-sidebar">
+            <div class="sidebar-section">
+                <h2><i class="fa-solid fa-industry"></i> FMCG Companies</h2>
+                <div class="company-tabs" id="companyTabs">
+                    <button class="tab-btn active" data-ticker="HUL">
+                        <span class="company-logo-text">
+                            <img src="https://logos.hunter.io/unilever.com" alt="HUL Logo">
+                        </span>
+                        <div class="tab-btn-content">
+                            <span class="ticker">HUL</span>
+                            <span class="name">Hindustan Unilever</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </button>
+                    <button class="tab-btn" data-ticker="ITC">
+                        <span class="company-logo-text">
+                            <img src="https://logos.hunter.io/itcportal.com" alt="ITC Logo">
+                        </span>
+                        <div class="tab-btn-content">
+                            <span class="ticker">ITC</span>
+                            <span class="name">ITC Limited</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </button>
+                    <button class="tab-btn" data-ticker="NESTLE">
+                        <span class="company-logo-text">
+                            <img src="https://logos.hunter.io/nestle.com" alt="Nestle Logo">
+                        </span>
+                        <div class="tab-btn-content">
+                            <span class="ticker">NESTLE</span>
+                            <span class="name">Nestle India</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </button>
+                    <button class="tab-btn" data-ticker="BRITANNIA">
+                        <span class="company-logo-text">
+                            <img src="https://logos.hunter.io/britannia.co.in" alt="Britannia Logo">
+                        </span>
+                        <div class="tab-btn-content">
+                            <span class="ticker">BRITANNIA</span>
+                            <span class="name">Britannia Industries</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </button>
+                    <button class="tab-btn" data-ticker="TATACONSUM">
+                        <span class="company-logo-text">
+                            <img src="https://logos.hunter.io/tataconsumer.com" alt="Tata Logo">
+                        </span>
+                        <div class="tab-btn-content">
+                            <span class="ticker">TATACONSUM</span>
+                            <span class="name">Tata Consumer Products</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right arrow"></i>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <!-- Sector Leaders Spotlight -->
+            <div class="sidebar-section info-card" style="margin-top: 15px;">
+                <h3><i class="fa-solid fa-trophy"></i> Sector Spotlights (FY25)</h3>
+                <div class="info-item">
+                    <span class="info-label" style="font-size: 11px; text-transform: uppercase;"><span class="spotlight-icon">🏆</span> Margin Champion (OPM)</span>
+                    <span class="info-value" style="font-weight: 600; color: var(--primary);">ITC (37.6%)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label" style="font-size: 11px; text-transform: uppercase;"><span class="spotlight-icon">⚡</span> Efficiency Leader (ROE)</span>
+                    <span class="info-value" style="font-weight: 600; color: var(--success);">Nestle (93.3%)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label" style="font-size: 11px; text-transform: uppercase;"><span class="spotlight-icon">🔥</span> Capital Return (ROCE)</span>
+                    <span class="info-value" style="font-weight: 600; color: var(--success);">Nestle (128.7%)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label" style="font-size: 11px; text-transform: uppercase;"><span class="spotlight-icon">🛡️</span> Low Debt / Safe Risk</span>
+                    <span class="info-value" style="font-weight: 600; color: var(--text-main);">HUL & Nestle (0.00 D/E)</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="app-content">
+            
+            <!-- Company Info Header (Screener.in style) -->
+            <div class="company-profile-header">
+                <div class="profile-title">
+                    <h2 id="currentCompanyName">Hindustan Unilever Limited</h2>
+                    <div class="badges">
+                        <span class="badge" id="currentCompanySector">FMCG - Diversified</span>
+                        <span class="badge ticker-badge" id="currentCompanyTicker">HUL</span>
+                    </div>
+                </div>
+                
+                <!-- Financial Stats Quick Grid -->
+                <div class="stats-grid" id="quickStatsGrid">
+                    <div class="stat-card">
+                        <span class="stat-label">Market Cap</span>
+                        <span class="stat-value" id="statMarketCap">₹5,92,100 Cr</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Current Price</span>
+                        <span class="stat-value" id="statCMP">₹2,520.00</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Stock P/E</span>
+                        <span class="stat-value" id="statPE">57.5</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Book Value</span>
+                        <span class="stat-value" id="statBookValue">₹222.00</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">ROCE (FY25)</span>
+                        <span class="stat-value text-green" id="statROCE">36.5%</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">ROE (FY25)</span>
+                        <span class="stat-value text-green" id="statROE">32.8%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytical Dashboard Core Views -->
+            <div class="dashboard-grid">
+                
+                <!-- Main Historical Chart Card -->
+                <div class="card chart-main-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-chart-line"></i> 10-Year Growth Trends (Sales & Net Profit)</h3>
+                        <div class="chart-toggles">
+                            <span class="chart-note">* Values in INR Crores</span>
+                        </div>
+                    </div>
+                    <div class="card-body chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    <div class="chart-insight-box" id="growthChartInsight">
+                        <i class="fa-solid fa-circle-info" style="color: var(--primary)"></i>
+                        <span class="insight-text">Insight loading...</span>
+                    </div>
+                </div>
+
+                <!-- Secondary Charts Grid (Two Columns) -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-chart-area"></i> Operating & Net Margins (%)</h3>
+                    </div>
+                    <div class="card-body chart-container-secondary">
+                        <canvas id="marginChart"></canvas>
+                    </div>
+                    <div class="chart-insight-box" id="marginChartInsight">
+                        <i class="fa-solid fa-circle-info" style="color: var(--primary)"></i>
+                        <span class="insight-text">Insight loading...</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-chart-bar"></i> Return Ratios Trend (ROE vs ROCE)</h3>
+                    </div>
+                    <div class="card-body chart-container-secondary">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                    <div class="chart-insight-box" id="efficiencyChartInsight">
+                        <i class="fa-solid fa-circle-info" style="color: var(--primary)"></i>
+                        <span class="insight-text">Insight loading...</span>
+                    </div>
+                </div>
+
+                <!-- Financial Statement (Screener.in Table) -->
+                <div class="card full-width-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-table"></i> 10-Year Profit & Loss Statement (FY2016 - FY2025)</h3>
+                        <span class="table-note">* All figures in INR Crores (except percentages and EPS)</span>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="financial-table" id="plTable">
+                            <thead>
+                                <!-- Year headers filled dynamically -->
+                            </thead>
+                            <tbody>
+                                <!-- Data rows filled dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Peer Comparison Section -->
+                <div class="card full-width-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-users-viewfinder"></i> FMCG Sector Peer Analysis (FY2025)</h3>
+                        <span class="table-note">* Click on column headers to sort peers</span>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="financial-table peer-table" id="peerTable">
+                            <thead>
+                                <tr>
+                                    <th onclick="sortPeerTable(0, 'string')">Ticker <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(1, 'string')">Company Name <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(2, 'number')">Market Cap (Cr) <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(3, 'number')">CMP (₹) <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(4, 'number')">P/E Ratio <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(5, 'number')">P/B Ratio <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(6, 'number')">OPM % (FY25) <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(7, 'number')">ROE % (FY25) <i class="fa-solid fa-sort"></i></th>
+                                    <th onclick="sortPeerTable(8, 'number')">ROCE % (FY25) <i class="fa-solid fa-sort"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Peer rows filled dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Dupont Analysis Interactive Calculator -->
+                <div class="card">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3 style="margin-bottom: 0;"><i class="fa-solid fa-calculator"></i> Interactive DuPont Analysis Calculator</h3>
+                        <button id="resetDupont" class="btn-reset" title="Reset sliders to actual financial data"><i class="fa-solid fa-rotate-left"></i> Reset to Actuals</button>
+                    </div>
+                    <div class="card-body dupont-widget">
+                        <p class="widget-desc">Decompose ROE into three drivers: Profitability, Efficiency, and Financial Leverage.</p>
+                        <div class="dupont-formula">
+                            <span class="formula-term">ROE = NPM % &times; Asset Turnover &times; Equity Multiplier</span>
+                        </div>
+                        <div class="calculator-inputs">
+                            <div class="slider-group">
+                                <label for="dupontNPM">Net Profit Margin (NPM %): <span id="valNPM">0%</span></label>
+                                <input type="range" id="dupontNPM" min="0" max="40" step="0.1" value="15">
+                                <div class="gauge-container"><div class="gauge-bar npm-gradient" id="barNPM" style="width: 0%;"></div></div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="dupontAssetTurn">Asset Turnover (Sales/Assets): <span id="valAssetTurn">0.00</span></label>
+                                <input type="range" id="dupontAssetTurn" min="0.1" max="4" step="0.05" value="1.5">
+                                <div class="gauge-container"><div class="gauge-bar asset-gradient" id="barAssetTurn" style="width: 0%;"></div></div>
+                            </div>
+                            <div class="slider-group">
+                                <label for="dupontLeverage">Equity Multiplier (Leverage): <span id="valLeverage">0.00</span></label>
+                                <input type="range" id="dupontLeverage" min="1.0" max="5.0" step="0.05" value="1.2">
+                                <div class="gauge-container"><div class="gauge-bar leverage-gradient" id="barLeverage" style="width: 0%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="calculator-output">
+                            <div class="calculated-roe-card">
+                                <span class="calc-label">Simulated Return on Equity (ROE)</span>
+                                <span class="calc-value" id="simulatedROE">0.00%</span>
+                                <div class="gauge-container" style="height: 6px; margin-top: 8px; background-color: rgba(255,255,255,0.3);"><div class="gauge-bar" id="barSimulatedROE" style="width: 0%; background-color: var(--primary-dark);"></div></div>
+                            </div>
+                            <div class="benchmark-roe-card">
+                                <span class="calc-label">Actual FY2025 ROE (Selected Company)</span>
+                                <span class="calc-value" id="actualROE">0.00%</span>
+                                <div class="gauge-container" style="height: 6px; margin-top: 8px; background-color: rgba(0,0,0,0.05);"><div class="gauge-bar" id="barActualROE" style="width: 0%; background-color: var(--success);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storytelling & Analytical Inferences -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-book-open"></i> Financial Story & Analytical Inferences</h3>
+                    </div>
+                    <div class="card-body story-panel">
+                        <div class="story-content" id="storyContent">
+                            <!-- Story dynamically updated based on the selected company -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 FMCG Financial Analytics Portal. All financial data is sourced from audited annual filings (FY2016 - FY2025) and verified market reports.</p>
+    </footer>
+
+    <!-- Load scripts in order -->
+    <script src="data.js?v=1.1"></script>
+    <script src="app.js?v=1.1"></script>
+</body>
+</html>
